@@ -14,7 +14,7 @@ print(
     max(elf_calories_tot),
 )
 
-# Extract the top three Elves with the most calories and their sum
+# Extract the top three elves with the most calories and their sum
 elf_calories_tot_top3 = sorted(elf_calories_tot, reverse=True)[:3]
 print(
     "Amount of calories of the top three elves carrying the most calories:",
