@@ -32,12 +32,10 @@ priorities = [
     for lst in common_items.values()
 ]
 
-[
+for k, prio in dict(zip([1, 2], priorities)).items():
     print(
         "The sum of priorities of common item types for part",
         k,
         ":\n",
         sum(prio),
     )
-    for k, prio in dict(zip([1, 2], priorities)).items()
-]
