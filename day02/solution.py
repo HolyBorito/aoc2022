@@ -57,11 +57,7 @@ with open(os.getcwd() + "/day02/input.txt") as f:
     rounds = pd.read_csv(f, sep=" ", header=None)
 
 rounds.columns = ["opponent", "you"]
-dict = {
-    1: score_matrix_1,
-    2: score_matrix_2,
-}
-for k, df in dict.items():
+for k, df in {1: score_matrix_1, 2: score_matrix_2}.items():
     for opp_move in ["A", "B", "C"]:
         for your_move in ["X", "Y", "Z"]:
             rounds.loc[
