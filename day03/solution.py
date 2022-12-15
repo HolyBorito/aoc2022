@@ -22,6 +22,7 @@ common_items[2] = [
     )
     for i in range(int(len(rucksack_items) / 3))
 ]
+
 priorities = [
     [
         string.ascii_lowercase.index(str.lower()) + 1
