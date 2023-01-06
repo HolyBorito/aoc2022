@@ -1,7 +1,7 @@
 with open("/home/1000/gitrepos/aoc2022/day06/input.txt") as f:
     buffer = f.read()
 
-markers = {1: 4, 2: 14}
+markers = {"packet": 4, "message": 14}
 
 for k, char in markers.items():
     sliding_window = [
@@ -22,5 +22,5 @@ for k, char in markers.items():
     )
 
     print(
-        f"In part {k}, the first start-of-packet/message marker occurs after character:\n {first_marker}"
+        f"The first start-of-{k} marker occurs after character:\n {first_marker}"
     )
