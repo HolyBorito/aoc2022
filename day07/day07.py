@@ -70,5 +70,5 @@ if GET_SIZE:
     target_dir_size = find_directory_size(
         filesystem, MIN_SIZE=USED_SPACE + UNUSED_SPACE - TOTAL_SPACE
     )
-    print(f"The sum of total directory sizes for part 1 is:\n {sum_dir_sizes}")
-    print(f"The smallest directory size for part 2 is:\n {target_dir_size}")
+    print(f"The sum of allowed total directory sizes is:\n {sum_dir_sizes}")
+    print(f"The smallest allowed total directory size is:\n {target_dir_size}")
