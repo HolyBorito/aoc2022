@@ -111,7 +111,7 @@ def find_directory_size(d, MAX_SIZE=None, MIN_SIZE=None, size=0):
         to be updated through recursion
 
     Returns:
-        int: final size update, being the answer to Part One or Two
+        int: final size update, being the answer to Part One or Two.
     """
     if MAX_SIZE is None and MIN_SIZE is None:
         return d["/"][0]
