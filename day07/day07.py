@@ -6,20 +6,18 @@ from find_nested_keys_values import (
     update_key_value,
 )
 
-with open("/home/1000/gitrepos/aoc2022/day07/input.txt") as f:
-    output = f.read().splitlines()
 # with open("/home/1000/gitrepos/aoc2022/day07/input_test.txt") as f:
 #     output = f.read().splitlines()
+with open("/home/1000/gitrepos/aoc2022/day07/input.txt") as f:
+    output = f.read().splitlines()
 
 output = [re.split(" ", out) for out in output]
 # print(output)
 
-#############################################################################
-## OBTAIN THE FULL DICTIONARY REPRESENTATION OF THE FILESYSTEM DIRECTORIES ##
-## TOGETHER WITH THE CORRESPONDING DIRECTORY SIZES (GET_SIZE=TRUE).        ##
-## SEE PRETTY_PRINT_FILESYSTEM.PY FOR A PRETTY PRINT OF THE                ##
-## FILESYSTEM DICTIONARY FOR BOTH GET_SIZE=FALSE AND GET_SIZE=TRUE.        ##
-#############################################################################
+###############################################################################
+### OBTAIN THE FULL DICTIONARY REPRESENTATION OF THE FILESYSTEM DIRECTORIES ###
+### TOGETHER WITH THE CORRESPONDING DIRECTORY SIZES (GET_SIZE=TRUE).        ###
+###############################################################################
 filesystem = {}
 GET_SIZE = True
 

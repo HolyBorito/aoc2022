@@ -32,21 +32,36 @@ def update_key_value(d, p_keys, key, val, GET_SIZE=True, nest_depth=0):
     """
     Recursively searches for a target key inside a nested
     dictionary to either replace or extend the target value,
-    respectively being a string ("dir") or sub-dictionary, with
-    either a empty dictionary or key-value pair, respectively.
+    respectively being a string ("dir") or sub-dictionary
+    (being the second element inside a two-element list for
+    GET_SIZE=True, with the other being directory size) with
+    an empty dictionary or key-value pair, respectively.
 
     Args:
-        d (dict): nested dictionary
-        p_keys (list): list containing the parent keys (can be none) of
-        the target key, and the target key itself. Output of find_parent_keys
+        d (dict): nested dictionary. Input to
+        find_directory_size for GET_SIZE=True
+        p_keys (list): list containing the parent keys
+        (can be none) of the target key, and the target
+        key itself. Output of find_parent_keys
         key (str): target key
-        val (dict): empty dictionary or key-value pair to either replace
-        or extend the target value (a string or dictionary resp.) with
-        nest_depth (int, optional): recursion counter variable representing
-        the current dictionary nesting level. Defaults to 0
+        val (dict): empty dictionary or key-value pair
+        to replace or extend the target value (a string
+        or dictionary resp.) with
+        GET_SIZE (bool): boolean for calculating the total sizes
+        of the filesystem directories to solve the Day 7 puzzle.
+        -> If True (default), a two-element list consisting
+        of the total directory size and a sub-dictionary is
+        assigned to each directory key
+        -> If False, the filesystem directories are simply
+        represented as nested sub-dictionaries without an
+        outer list structure, because why not :p
+        nest_depth (int, optional): recursion counter
+        variable to keep track of the current dictionary
+        nesting level. Defaults to 0
 
     Returns:
-        dict: nested dictionary with updated key value, being a sub-dictionary.
+        dict: nested dictionary with updated key value, being
+        a list (GET_SIZE=True) or sub-dictionary (GET_SIZE=False).
     """
     MAX_DEPTH = len(p_keys) - 1
     for k, v in d.items():
@@ -60,7 +75,7 @@ def update_key_value(d, p_keys, key, val, GET_SIZE=True, nest_depth=0):
                 v[1].update(val)
             elif isinstance(v, dict):
                 v.update(val)
-            else:
+            elif isinstance(v, str):
                 d.update({k: val})
         elif k == p_keys[nest_depth] and nest_depth < MAX_DEPTH:
             if GET_SIZE:
@@ -83,16 +98,20 @@ def find_directory_size(d, MAX_SIZE=None, MIN_SIZE=None, size=0):
     needed to solve Part One and Two of the Day 7 puzzle.
 
     Args:
-        d (dict): nested filesystem dictionary
-        MAX_SIZE (int, optional): maximum total directory size for Part One.
-        Defaults to None but set it to 100000 for answering Part One
-        MIN_SIZE (int, optional): minimal total directory size for Part Two.
-        Defaults to None but set it to d["/"][0] - 40000000 for answering Part Two
-        size (int, optional): variable to keep track of the directory sizes.
-        Defaults to 0 for it to be updated through recursion
+        d (dict): nested filesystem dictionary. Output
+        of update_key_value (GET_SIZE=True)
+        MAX_SIZE (int, optional): maximum total directory
+        size for Part One. Defaults to None but set it to
+        100000 for answering Part One
+        MIN_SIZE (int, optional): minimal total directory
+        size for Part Two. Defaults to None but set it to
+        d["/"][0] - 40000000 for answering Part Two
+        size (int, optional): variable to keep track
+        of the directory sizes. Defaults to 0 for it
+        to be updated through recursion
 
     Returns:
-        int: final directory size update, being the answer to Part One or Two
+        int: final size update, being the answer to Part One or Two
     """
     if MAX_SIZE is None and MIN_SIZE is None:
         return d["/"][0]
