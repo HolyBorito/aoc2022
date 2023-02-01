@@ -67,7 +67,7 @@ def update_key_value(d, p_keys, key, val, GET_SIZE=True, nest_depth=0):
     for k, v in d.items():
         if nest_depth > MAX_DEPTH:
             return d
-        elif k == key and nest_depth == MAX_DEPTH:
+        elif nest_depth == MAX_DEPTH and k == key:
             nest_depth += 1
             if isinstance(v, list):
                 if val[next(iter(val))].isdigit():
@@ -77,7 +77,7 @@ def update_key_value(d, p_keys, key, val, GET_SIZE=True, nest_depth=0):
                 v.update(val)
             elif isinstance(v, str):
                 d.update({k: val})
-        elif k == p_keys[nest_depth] and nest_depth < MAX_DEPTH:
+        elif k == p_keys[nest_depth]:
             if GET_SIZE:
                 if isinstance(val, dict) and val:
                     if val[next(iter(val))].isdigit():
@@ -102,16 +102,16 @@ def find_directory_size(d, MAX_SIZE=None, MIN_SIZE=None, size=0):
         of update_key_value (GET_SIZE=True)
         MAX_SIZE (int, optional): maximum total directory
         size for Part One. Defaults to None but set it to
-        100000 for answering Part One
+        100000 for answering the puzzle
         MIN_SIZE (int, optional): minimal total directory
         size for Part Two. Defaults to None but set it to
-        d["/"][0] - 40000000 for answering Part Two
+        d["/"][0] - 40000000 for answering the puzzle
         size (int, optional): variable to keep track
         of the directory sizes. Defaults to 0 for it
         to be updated through recursion
 
     Returns:
-        int: final size update, being the answer to Part One or Two.
+        int: final directory size update, being the answer to Part One or Two.
     """
     if MAX_SIZE is None and MIN_SIZE is None:
         return d["/"][0]

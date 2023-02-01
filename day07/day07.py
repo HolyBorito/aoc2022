@@ -62,11 +62,11 @@ for i in range(2, len(output)):
 
 if GET_SIZE:
     USED_SPACE = filesystem["/"][0]
-    UNUSED_SPACE = 30000000
+    REQUIRED_SPACE = 30000000
     TOTAL_SPACE = 70000000
     sum_dir_sizes = find_directory_size(filesystem, MAX_SIZE=100000)
     target_dir_size = find_directory_size(
-        filesystem, MIN_SIZE=USED_SPACE + UNUSED_SPACE - TOTAL_SPACE
+        filesystem, MIN_SIZE=USED_SPACE + REQUIRED_SPACE - TOTAL_SPACE
     )
     print(f"The sum of allowed total directory sizes is:\n {sum_dir_sizes}")
     print(f"The smallest allowed total directory size is:\n {target_dir_size}")
