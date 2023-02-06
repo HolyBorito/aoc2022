@@ -1,8 +1,9 @@
 def find_parent_keys(d, key, val):
     """
-    Recursively derives parent keys from a target
-    key and value inside a nested dictionary.
-
+    Recursively derives parent keys from a target key
+    and value inside a nested dictionary, of which the
+    sub-dictionaries may in turn be part of nested lists,
+    see update_key_value for some more context.
     Args:
         d (dict): nested dictionary
         key (str): target key
