@@ -1,7 +1,7 @@
-My not so clean code but it gets the job done.
+My comprehensive solution to the Advent of Code Day 7 puzzle.
 
 Components:
-day07.py: solution to Part One and Two of the Advent Of Code Day 7 puzzle
+day07.py: solution to Part One and Two of the puzzle
 find_nested_keys_values.py: necessary functionality for deriving the full filesystem
 dictionary (because why not) and solving the puzzle using this dictionary
 input_test.txt: example data from https://adventofcode.com/2022/day/7
